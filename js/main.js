@@ -6,11 +6,6 @@ function init() {
 
 	aq = new Aquarium;
 
-	// function preloadScene() {
-	// 	this.load.image('fishes_default', 'assets/fishes_default.png');
-	// 	this.load.image('fishes_alternate', 'assets/fishes_alternate.png');
-	// }
-
 	const app = new PIXI.Application({ width: 800, height: 600 });
 	const appDOM = document.body.appendChild(app.view);
 
