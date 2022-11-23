@@ -45,6 +45,17 @@ class Vector {
 		return Math.atan2(this.x, this.y);
 	}
 
+	rotate(angle, clockwise = false) {
+		if (clockwise)
+			angle = 2 * Math.PI - angle;
+
+		const x = this.x * Math.cos(angle) - this.y * Math.sin(angle);
+		const y = this.x * Math.sin(angle) + this.y * Math.cos(angle);
+
+		this.x = x;
+		this.y = y;
+	}
+
 	bound(vec) {
 		const ratio = this.x / this. y;
 
