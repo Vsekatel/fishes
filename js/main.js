@@ -5,16 +5,25 @@ function init() {
 	const startPoint = performance.now();
 
 	aq = new Aquarium;
+	gradientCreator = new GradientCreator;
+	const app = new PIXI.Application({ 
+		width: screen.width, 
+		height: screen.height*0.893
+		, 	
+	});
 
-	const app = new PIXI.Application({ width: 800, height: 600 });
+	
+	gradientCreator.multipleColorGradientRect(app.stage, app.screen.width, app.screen.height, bgColors, 0, 0);
+	
 	const appDOM = document.body.appendChild(app.view);
-
+	
 	app.ticker.add((delta) => {
 		tick(delta);
 	});
 
+	
 	appDOM.onclick = (event) => {
-
+		
 		const r = (Math.random() >= 0.5 ? 1 : 0);
 		let t;
 		if (r === 0)

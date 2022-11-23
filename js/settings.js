@@ -2,7 +2,7 @@
 const MAX_SPEED = new Vector(10, 10);
 
 // ---------------------------------------------------------------------------
-
+const bgColors = [new ColorWithAlfa(0xFFF7E5, 1), new ColorWithAlfa(0x52A0B6, 1), new ColorWithAlfa(0x070A1E, 1)];
 const TEXT_STYLE_ID = new PIXI.TextStyle({
 	fontFamily: 'Arial',
 	fontSize: 12,

@@ -1,8 +1,8 @@
 
 class Aquarium {
 
-	width = 800;
-	height = 600;
+	width = screen.width;
+	height = screen.width;
 
 	bounds = { top: 0, right: 0, bottom: 0, left: 0 };
 
