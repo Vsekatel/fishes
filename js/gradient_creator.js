@@ -23,7 +23,7 @@ class GradientCreator {
 
   multipleColorGradientRect(parrent, width, height, colors, startLeft, startTop){
     for(var i = 0; i < colors.length - 1;  i++){
-      this.gradientRectToParrent(parrent, width, height/(colors.length-1), 0, startTop, colors[i].color, colors[i].alpha, colors[i+1].color, colors[i+1].alpha);
+      this.gradientRectToParrent(parrent, width, height/(colors.length-1), startLeft, startTop, colors[i].color, colors[i].alpha, colors[i+1].color, colors[i+1].alpha);
       startTop += height/(colors.length-1);
     }
 
