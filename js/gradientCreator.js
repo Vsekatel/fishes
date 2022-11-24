@@ -28,7 +28,7 @@ class GradientCreator {
     }
 
   }
-
+  
   multipleColorGradientEllipse(parrent, width, height, colors, startLeft, startTop){
     for(var i = 0; i < colors.length - 1;  i++){
       this.gradientEllipseToParrent(parrent, width, height/(colors.length-1), startLeft, startTop, colors[i].color, colors[i].alpha, colors[i+1].color, colors[i+1].alpha);

@@ -5,15 +5,18 @@ function init() {
 	const startPoint = performance.now();
 
 	aq = new Aquarium;
-	gradientCreator = new GradientCreator;
-	const app = new PIXI.Application({
-		width: screen.width,
+
+	const app = new PIXI.Application({ 
+		width: screen.width, 
 		height: screen.height * 0.893
-		,
 	});
 
+	aq.view = app;
 
-	gradientCreator.multipleColorGradientRect(app.stage, app.screen.width, app.screen.height, bgColors, 0, 0);
+	const gradientCreator = new GradientCreator;
+
+	gradientCreator.multipleColorGradientRect(
+		app.stage, app.screen.width, app.screen.height, bgColors, 0, 0);
 
 	const highlight = [new ColorWithAlfa(0xFFFFFF, 0.5), new ColorWithAlfa(0xFFFFFF, 0)];
 	leftHighlight = 0;
@@ -22,13 +25,14 @@ function init() {
 		highlightClass = new Highlight;
 		highlightClass.createHighlight(app, widthCalculated);
 	}
-
+  
 	const appDOM = document.body.appendChild(app.view);
 
 	app.ticker.add((delta) => {
 		tick(delta);
 	});
 
+	// -----------------------------------------------------------------------
 
 	appDOM.onclick = (event) => {
 
@@ -46,8 +50,6 @@ function init() {
 		c.setAcceleration(new Vector(0.001, 0.001));
 
 	};
-
-	aq.view = app;
 
 	console.log('loaded in ' + (performance.now() - startPoint) + ' ms');
 }
