@@ -6,29 +6,37 @@ function init() {
 
 	aq = new Aquarium;
 	gradientCreator = new GradientCreator;
-	const app = new PIXI.Application({ 
-		width: screen.width, 
-		height: screen.height*0.893
-		, 	
+	const app = new PIXI.Application({
+		width: screen.width,
+		height: screen.height * 0.893
+		,
 	});
 
-	
+
 	gradientCreator.multipleColorGradientRect(app.stage, app.screen.width, app.screen.height, bgColors, 0, 0);
-	
+
+	const highlight = [new ColorWithAlfa(0xFFFFFF, 0.5), new ColorWithAlfa(0xFFFFFF, 0)];
+	leftHighlight = 0;
+	widthCalculated = app.screen.width / 150;
+	for (var i = 0; i < app.screen.width*2 / widthCalculated; i++) {
+		highlightClass = new Highlight;
+		highlightClass.createHighlight(app, widthCalculated);
+	}
+
 	const appDOM = document.body.appendChild(app.view);
-	
+
 	app.ticker.add((delta) => {
 		tick(delta);
 	});
 
-	
+
 	appDOM.onclick = (event) => {
-		
+
 		const r = (Math.random() >= 0.5 ? 1 : 0);
 		let t;
 		if (r === 0)
 			t = CREATURE_TYPES.DEFAULT;
-		else if(r === 1)
+		else if (r === 1)
 			t = CREATURE_TYPES.ALTERNATE;
 		else
 			console.error('wtf');
@@ -67,7 +75,7 @@ function tick(delta) {
 
 		creature.attachments.forEach(att => {
 			if (att.isVisible) {
-					att.view.position.set(x + att.x, y + att.y);
+				att.view.position.set(x + att.x, y + att.y);
 			}
 		});
 	});
