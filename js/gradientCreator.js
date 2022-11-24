@@ -28,6 +28,14 @@ class GradientCreator {
     }
 
   }
+  
+  multipleColorGradientEllipse(parrent, width, height, colors, startLeft, startTop){
+    for(var i = 0; i < colors.length - 1;  i++){
+      this.gradientEllipseToParrent(parrent, width, height/(colors.length-1), startLeft, startTop, colors[i].color, colors[i].alpha, colors[i+1].color, colors[i+1].alpha);
+      startTop += height/(colors.length-1);
+    }
+
+  }
 
   gradientRectToParrent(parrent, width, height, startLeft, startTop, color1, alpha1, color2, alpha2) {
     var gradient = new PIXI.Graphics();
@@ -45,7 +53,7 @@ class GradientCreator {
     var stepCoef;
     var stepColor;
     var stepAlpha;
-    var stepsCount = 500;
+    var stepsCount = 1500;
     var stepHeight = rect.height / stepsCount;
     for (var stepIndex = 0; stepIndex < stepsCount; stepIndex++) {
       stepCoef = stepIndex / stepsCount;
@@ -58,6 +66,40 @@ class GradientCreator {
         rect.width,
         stepHeight
       );
+    }
+  }
+
+  gradientEllipseToParrent(parrent, width, height, startLeft, startTop, color1, alpha1, color2, alpha2) {
+    var gradient = new PIXI.Graphics();
+    parrent.addChild(gradient);
+    //
+    var rect = {
+      width: width,
+      height: height
+    };
+    var round = 20;
+    //
+    var colorFromData = this.prepareColorData(color1, alpha1);
+    var colorToData = this.prepareColorData(color2, alpha2);
+    //
+    var stepCoef;
+    var stepColor;
+    var stepAlpha;
+    var stepsCount = 1500;
+    var stepHeight = rect.height / stepsCount;
+    for (var stepIndex = 0; stepIndex < stepsCount; stepIndex++) {
+      stepCoef = stepIndex / stepsCount;
+      stepColor = this.getColorOfGradient(colorFromData, colorToData, stepCoef);
+
+      gradient.beginFill(stepColor.color, stepColor.alpha);
+      gradient.drawEllipse (
+        startLeft,
+        rect.height * stepCoef+startTop,
+        rect.width,
+        stepHeight,
+        
+      );
+      gradient.endFill(0x000000, 0);
     }
   }
 
