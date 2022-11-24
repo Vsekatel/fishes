@@ -92,6 +92,32 @@ class Random {
 
 		return str;
 	}
+
+	// warr is an array of Weighted
+	static weighted(warr) {
+		const stack = [];
+
+		warr.forEach(item => {
+			for (let i = 0; i < item.weight; i++) {
+				stack.push(item.value);
+			}
+		});
+
+		return stack[this.int(0, stack.length - 1)];
+	}
+}
+
+class Weighted {
+	value = 0;
+	weight = 0;
+
+	constructor(value, weight) {
+		if (value)
+			this.value = value;
+
+		if (weight)
+			this.weight = weight;
+	}
 }
 
 
