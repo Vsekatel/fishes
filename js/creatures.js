@@ -98,7 +98,6 @@ class Creature {
 		aq.view.stage.addChild(idText);
 
 		att.setView(idText);
-console.log(att);
 	}
 
 	removeAttachment(att) {

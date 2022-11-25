@@ -7,8 +7,8 @@ function init() {
 	aq = new Aquarium;
 
 	const app = new PIXI.Application({ 
-		width: screen.width, 
-		height: screen.height * 0.893
+		width: screen.availWidth, 
+		height: screen.availHeight
 	});
 
 	aq.view = app;
@@ -27,6 +27,7 @@ function init() {
 	}
   
 	const appDOM = document.body.appendChild(app.view);
+	// appDOM.classList.add('mainApp');
 
 	app.ticker.add((delta) => {
 		tick(delta);
