@@ -48,7 +48,10 @@ function init() {
 
 		const c = new Creature(t, event.clientX, event.clientY);
 
-		c.setAcceleration(new Vector(0.001, 0.001));
+		const rx = Random.float(-0.001, 0.001);
+		const ry = Random.float(-0.001, 0.001);
+
+		c.setAcceleration(new Vector(rx, ry));
 
 	};
 

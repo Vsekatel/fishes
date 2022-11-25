@@ -94,6 +94,8 @@ class Creature {
 	addAttachment(att) {
 		this.attachments.push(att);
 
+		att.setOwner(this);
+
 		const idText = new PIXI.Text(att.text, TEXT_STYLE_ID);
 		aq.view.stage.addChild(idText);
 

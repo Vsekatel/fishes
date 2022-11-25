@@ -159,6 +159,7 @@ class Attachment {
 	x;
 	y;
 	view;
+	owner;
 
 	constructor(text = '', x = 0, y = 0, isVisible = false) {
 		this.setText(text).setPosition(x, y).setVisibility(isVisible);
@@ -187,5 +188,9 @@ class Attachment {
 
 	setView(view) {
 		this.view = view;
+	}
+
+	setOwner(owner) {
+		this.owner = owner;
 	}
 }
